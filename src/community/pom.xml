@@ -81,7 +81,8 @@
           <descriptor>release/ext-onelogin.xml</descriptor> 
           <descriptor>release/ext-notification.xml</descriptor> 
           <descriptor>release/ext-ows-simulate.xml</descriptor> 
-          <descriptor>release/ext-jdbc-metrics.xml</descriptor> 
+          <descriptor>release/ext-jdbc-metrics.xml</descriptor>
+          <descriptor>release/ext-gwc-azure.xml</descriptor>
         </descriptors>
       </configuration>
      </plugin>
@@ -225,6 +226,7 @@
         <module>jdbcstore</module>
         <module>gdal</module>
         <module>gwc-s3</module>
+        <module>gwc-azure</module>
         <module>backup-restore</module>
         <module>ncwms</module>
         <module>web-resource</module>
@@ -433,6 +435,12 @@
       <id>gwc-s3</id>
       <modules>
         <module>gwc-s3</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>gwc-azure</id>
+      <modules>
+        <module>gwc-azure</module>
       </modules>
     </profile>
     <profile>

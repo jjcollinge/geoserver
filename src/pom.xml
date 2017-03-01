@@ -578,6 +578,11 @@
     <artifactId>gwc-aws-s3</artifactId>
     <version>${gwc.version}</version>
    </dependency>
+   <dependency>
+    <groupId>org.geowebcache</groupId>
+    <artifactId>gwc-azure-blob</artifactId>
+    <version>${gwc.version}</version>
+   </dependency>
 
    <!-- ORACLE -->
    <!-- Download and install into your own repo -->
