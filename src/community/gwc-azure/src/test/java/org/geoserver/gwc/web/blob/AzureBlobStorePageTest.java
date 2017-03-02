@@ -108,7 +108,7 @@ public class AzureBlobStorePageTest extends GeoServerWicketTestSupport {
         BlobStoreConfig config = GWC.get().getBlobStores().get(0);
         assertTrue(config instanceof AzureBlobStoreConfig);
         assertEquals("yourblobstore", config.getId());
-        assertEquals("yourbucket", ((AzureBlobStoreConfig) config).getBucket());
+        assertEquals("yourcontainer", ((AzureBlobStoreConfig) config).getContainer());
                 
         //test updated id!
         layer = GWC.get().getTileLayerByName("cite:Lakes");
