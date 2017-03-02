@@ -1288,6 +1288,16 @@
         </dependency>
       </dependencies>
    </profile>
+    <profile>
+      <id>gwc-azure</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.geoserver.community</groupId>
+          <artifactId>gs-gwc-azure</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
    <profile>
       <id>geogig</id>
       <dependencies>
