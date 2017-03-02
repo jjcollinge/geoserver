@@ -10,12 +10,13 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
+import org.geowebcache.azure.AzureBlobStoreConfig;
 
 public class AzureBlobStorePanel extends Panel {
 
     private static final long serialVersionUID = -8237328668463257329L;
 
-    public AzutrBlobStorePanel(String id, final IModel<AzureBlobStoreConfig> configModel) {
+    public AzureBlobStorePanel(String id, final IModel<AzureBlobStoreConfig> configModel) {
         super(id, configModel);
 
         add(new TextField<String>("container").setRequired(true).add(
