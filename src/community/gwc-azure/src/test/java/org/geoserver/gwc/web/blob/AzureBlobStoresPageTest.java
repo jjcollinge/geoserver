@@ -26,7 +26,7 @@ import org.geoserver.web.wicket.GeoServerTablePanel;
 import org.geowebcache.config.BlobStoreConfig;
 import org.geowebcache.config.FileBlobStoreConfig;
 import org.geowebcache.layer.TileLayer;
-import org.geowebcache.s3.S3BlobStoreConfig;
+import org.geowebcache.azure.AzureBlobStoreConfig;
 import org.junit.Test;
 
 /**
@@ -36,7 +36,7 @@ import org.junit.Test;
  * @author Niels Charlier
  *
  */
-public class S3BlobStoresPageTest extends GeoServerWicketTestSupport {
+public class AzureBlobStoresPageTest extends GeoServerWicketTestSupport {
     
     private static final String ID_DUMMY1 = "zzz";
     private static final String ID_DUMMY2 = "yyy";
@@ -49,11 +49,11 @@ public class S3BlobStoresPageTest extends GeoServerWicketTestSupport {
     }
     
     public BlobStoreConfig dummyStore2() throws Exception {
-        S3BlobStoreConfig config = new S3BlobStoreConfig();
+        AzureBlobStoreConfig config = new AzureBlobStoreConfig();
         Field id = BlobStoreConfig.class.getDeclaredField("id");
         id.setAccessible(true);
         id.set(config, ID_DUMMY2);
-        config.setBucket("bucket");
+        config.setContainer("container");
         return config; 
     }
                 

@@ -20,6 +20,7 @@ import org.geoserver.web.GeoServerWicketTestSupport;
 import org.geowebcache.config.BlobStoreConfig;
 import org.geowebcache.config.ConfigurationException;
 import org.geowebcache.layer.TileLayer;
+import org.geowebcache.azure.AzureBlobStoreConfig;
 import org.junit.Test;
 
 public class AzureBlobStorePageTest extends GeoServerWicketTestSupport {
