@@ -29,13 +29,6 @@ import org.geowebcache.layer.TileLayer;
 import org.geowebcache.azure.AzureBlobStoreConfig;
 import org.junit.Test;
 
-/**
- * 
- * Modified Test for the BlobStoresPage, but now with a S3 BlobStore
- * 
- * @author Niels Charlier
- *
- */
 public class AzureBlobStoresPageTest extends GeoServerWicketTestSupport {
     
     private static final String ID_DUMMY1 = "zzz";
@@ -93,10 +86,10 @@ public class AzureBlobStoresPageTest extends GeoServerWicketTestSupport {
         assertEquals(blobStores.size() + 1, table.getDataProvider().size());        
         assertTrue(getStoresFromTable(table).contains(dummy2));   
         
-        //sort descending on type, S3 should be on top
+        //sort descending on type, Azure should be on bottom
         tester.clickLink("storesPanel:listContainer:sortableLinks:1:header:link", true);
         tester.clickLink("storesPanel:listContainer:sortableLinks:1:header:link", true);
-        assertEquals(dummy2, getStoresFromTable(table).get(0));           
+        assertEquals(dummy2, getStoresFromTable(table).get(1));
                         
         GWC.get().removeBlobStores(Collections.singleton(ID_DUMMY1));
         GWC.get().removeBlobStores(Collections.singleton(ID_DUMMY2));

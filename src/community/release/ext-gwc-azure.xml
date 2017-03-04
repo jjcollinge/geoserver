@@ -11,7 +11,8 @@
             <includes>
                 <include>*azure*.jar</include>
                 <include>azure*.jar</include>
-                <include>azure-storage*.jar</include>
+                <include>jackson*.jar</include>
+                <include>slf4j*.jar</include>
             </includes>
         </fileSet>
     </fileSets>

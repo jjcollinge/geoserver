@@ -19,6 +19,7 @@ import org.geoserver.gwc.GWC;
 import org.geoserver.web.GeoServerWicketTestSupport;
 import org.geowebcache.config.BlobStoreConfig;
 import org.geowebcache.config.ConfigurationException;
+import org.geowebcache.config.FileBlobStoreConfig;
 import org.geowebcache.layer.TileLayer;
 import org.geowebcache.azure.AzureBlobStoreConfig;
 import org.junit.Test;
@@ -41,15 +42,15 @@ public class AzureBlobStorePageTest extends GeoServerWicketTestSupport {
         
         DropDownChoice typeOfBlobStore = (DropDownChoice) tester.getComponentFromLastRenderedPage("selector:typeOfBlobStore");
         assertEquals(2, typeOfBlobStore.getChoices().size());
-        assertEquals("File BlobStore", typeOfBlobStore.getChoices().get(0).toString());
-        assertEquals("Azure BlobStore", typeOfBlobStore.getChoices().get(1).toString());
-        
-        executeAjaxEventBehavior("selector:typeOfBlobStore", "change", "0");
-                        
-        tester.assertVisible("blobConfigContainer:blobStoreForm");        
-        tester.assertComponent("blobConfigContainer:blobStoreForm:blobSpecificPanel", FileBlobStorePanel.class);
+        assertEquals("Azure BlobStore", typeOfBlobStore.getChoices().get(0).toString());
+        assertEquals("File BlobStore", typeOfBlobStore.getChoices().get(1).toString());
         
         executeAjaxEventBehavior("selector:typeOfBlobStore", "change", "1");
+
+        tester.assertComponent("blobConfigContainer:blobStoreForm:blobSpecificPanel", FileBlobStorePanel.class);
+        tester.assertVisible("blobConfigContainer:blobStoreForm");
+        
+        executeAjaxEventBehavior("selector:typeOfBlobStore", "change", "0");
         tester.assertComponent("blobConfigContainer:blobStoreForm:blobSpecificPanel", AzureBlobStorePanel.class);
     }   
     
@@ -58,12 +59,12 @@ public class AzureBlobStorePageTest extends GeoServerWicketTestSupport {
         BlobStorePage page = new BlobStorePage();
 
         tester.startPage(page);
-        executeAjaxEventBehavior("selector:typeOfBlobStore", "change", "1");
+        executeAjaxEventBehavior("selector:typeOfBlobStore", "change", "0");
         
         FormTester formTester = tester.newFormTester("blobConfigContainer:blobStoreForm");
         formTester.setValue("id", "myblobstore");       
         formTester.setValue("enabled", false);
-        formTester.setValue("blobSpecificPanel:container", "mycontainer");
+        formTester.setValue("blobSpecificPanel:blobContainer", "mycontainer");
         formTester.setValue("blobSpecificPanel:azureAccountName", "myaccountname");
         formTester.setValue("blobSpecificPanel:azureAccountKey", "myaccountkey");
         tester.executeAjaxEvent("blobConfigContainer:blobStoreForm:save", "click");
@@ -101,7 +102,7 @@ public class AzureBlobStorePageTest extends GeoServerWicketTestSupport {
         
         FormTester formTester = tester.newFormTester("blobConfigContainer:blobStoreForm");
         formTester.setValue("id", "yourblobstore");
-        formTester.setValue("blobSpecificPanel:container", "yourcontainer");
+        formTester.setValue("blobSpecificPanel:blobContainer", "yourcontainer");
         formTester.submit();
         tester.executeAjaxEvent("blobConfigContainer:blobStoreForm:save", "click");
         
